@@ -8,9 +8,9 @@ const resend = new Resend(process.env.API_KEY);
 const enviarEmail = async (body) => {
     const { data, error } = await resend.emails.send({
         from: 'Que curso <onboarding@resend.dev>',
-        to: ["bvirinni@gmail.com", "encontrar_liendojuanesteban@outlook.com"],
+        to: [process.env.EMAIL],
         subject: body.nombre,
-        html: `<strong>${body.resena}</strong>`,
+        html: `<p>El usuario ${body.nombre} nos dió una calificación de ${body.stars} estrellas y nos dió las siguientes sugerencias: ${body.resena}</p>`,
     });
 
     console.log("datos: ", data)
